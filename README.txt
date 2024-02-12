@@ -1,44 +1,14 @@
-Do at least ONE of the following tasks: refactor is mandatory. Write tests is optional, will be good bonus to see it. 
-Upload your results to a Github repo, for easier sharing and reviewing.
-
-Thank you and good luck!
-
-
-
-Code to refactor
-=================
-1) app/Http/Controllers/BookingController.php
-2) app/Repository/BookingRepository.php
-
-Code to write tests (optional)
-=====================
-3) App/Helpers/TeHelper.php method willExpireAt
-4) App/Repository/UserRepository.php, method createOrUpdate
-
-
-----------------------------
-
-What I expect in your repo:
-
-X. A readme with:   Your thoughts about the code. What makes it amazing code. Or what makes it ok code. Or what makes it terrible code. How would you have done it. Thoughts on formatting, structure, logic.. The more details that you can provide about the code (what's terrible about it or/and what is good about it) the easier for us to assess your coding style, mentality etc
-
-And 
-
-Y.  Refactor it if you feel it needs refactoring. The more love you put into it. The easier for us to asses your thoughts, code principles etc
-
-
-IMPORTANT: Make two commits. First commit with original code. Second with your refactor so we can easily trace changes. 
-
-
-NB: you do not need to set up the code on local and make the web app run. It will not run as its not a complete web app. This is purely to assess you thoughts about code, formatting, logic etc
-
-
-===== So expected output is a GitHub link with either =====
-
-1. Readme described above (point X above) + refactored code 
-OR
-2. Readme described above (point X above) + refactored core + a unit test of the code that we have sent
-
-Thank you!
-
-
+Remarks regarding the code:
+- Logic should be moved to services rather than repositories and controllers.
+- Extracting logic in services and separating them from queries helps in writing unit tests
+- No try catch was used in the code which makes debugging tough and also crashes the server.
+- There are a lot of conditions in repositories too, the purpose of repos should only be to make queries (get params and return results from query).
+- env data should be pulled from config or constant files
+- Request middlewares should be used so that missing params could be validated before code is executed further.
+- Early return pattern should be used.
+- Instead of repeating if statements, a helper function should be created that returns the desired result.
+- Logs should be used through out the project.
+- Triggering emails in repositories is not a good practise, It should be moved to services.
+- Try to user ternary operators where if-else is needed. (Better readabilty).
+- Un-used variables should be deleted.
+- Transactions should be used on database operations.
